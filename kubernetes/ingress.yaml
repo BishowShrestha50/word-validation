@@ -5,6 +5,8 @@ metadata:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: instance
+    alb.ingress.kubernetes.io/group.name: ""
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}, {"HTTP": 80}]'
     alb.ingress.kubernetes.io/certificate-arn: ""
   name: word-validation-ingress
   namespace: dev
@@ -15,8 +17,8 @@ spec:
       paths:
       - backend:
           service:
-            name: word-validation  # change as per service name
+            name: word-validation  
             port:
-              number: 80 # change as per service port
+              number: 80 
         path: /
         pathType: ImplementationSpecific
