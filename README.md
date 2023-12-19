@@ -101,7 +101,7 @@ This project implements a simple REST API for validating English words. It provi
 #### Access the  service
 
    ```
-   kubectl port-forward svc/<service-name> -p 8080:8080
+   kubectl port-forward -n dev svc/<service-name>  8080:80
    ```
 
 ### API usage
