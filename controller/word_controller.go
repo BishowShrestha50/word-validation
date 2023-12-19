@@ -1,23 +1,25 @@
 package controller
 
 import (
-	"encoding/json"
+	"errors"
 	"net/http"
 	"strings"
 	"word-validation/model"
+	"word-validation/utils"
 )
 
 func (s *Controller) WordsHandler(w http.ResponseWriter, r *http.Request) {
 	word := r.URL.Query().Get("word")
-	valid := s.Words[strings.ToLower(word)]
-	response := model.Response{
-		Valid: valid,
+	if word == "" {
+		utils.ERROR(w, http.StatusBadRequest, errors.New("required word"))
+		return
 	}
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(response)
+	valid := s.Words[strings.ToLower(word)]
+	utils.JSON(w, http.StatusOK, model.Response{
+		Valid: valid,
+	})
 }
 
 func (s *Controller) Health(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode("ok")
+	utils.JSON(w, http.StatusOK, "OK")
 }

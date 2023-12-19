@@ -2,7 +2,6 @@ package service
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 	"strings"
 )
@@ -10,9 +9,8 @@ import (
 func (s *Service) GetAllWords(filePath string) (map[string]bool, error) {
 	wordSet := make(map[string]bool)
 	readFile, err := os.Open(filePath)
-
 	if err != nil {
-		fmt.Println(err)
+		return nil, err
 	}
 	fileScanner := bufio.NewScanner(readFile)
 	fileScanner.Split(bufio.ScanLines)

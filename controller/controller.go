@@ -20,7 +20,7 @@ func NewController() *Controller {
 
 	filePath := os.Getenv("WORD_FILE_PATH")
 	if filePath == "" {
-		filePath = "/data/words.txt"
+		filePath = "words.txt"
 	}
 	words, err := ctl.service.GetAllWords(filePath)
 	if err != nil {
