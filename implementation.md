@@ -48,7 +48,7 @@ The English Word Validation API follows a simple architecture:
 
 - **Ingress:**
   - Sets up an Ingress resource for external entry, assuming AWS infrastructure.
-  - Specifies the DNS name, namespace, and AWS ALB integration annotations.
+  - Specifies the DNS name, namespace, and AWS ALB integration  annotations.
 
 
 ## Conclusion
